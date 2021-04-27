@@ -1,7 +1,7 @@
 from app.domain.shared.user import User
-import repository_base
+from app.infrastructure.repositories.repository_base import RepositoryBase
 
-class UserRepository(repository_base.RepositoryBase):
+class UserRepository(RepositoryBase):
 
     def __init__(self):
         super(UserRepository, self).__init__()

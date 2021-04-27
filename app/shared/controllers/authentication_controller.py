@@ -1,8 +1,8 @@
 from flask import render_template, redirect, request, url_for
 from .. import shared
 
-import flask.ext.login
-from flask.ext.login import login_user, logout_user, \
+import flask_login
+from flask_login import login_user, logout_user, \
     current_user
 
 from app.domain.services.authentication_service import AuthenticationService

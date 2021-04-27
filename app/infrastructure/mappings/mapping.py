@@ -3,7 +3,7 @@ from sqlalchemy.orm import mapper, relationship
 from sqlalchemy.orm import column_property
 from sqlalchemy import select, func, and_
 
-from flask.ext.sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 
 from app.domain.shared.user import User
 from app.domain.shared.role_user import Role_User
@@ -28,14 +28,16 @@ def init(db):
 		db.Column('name', String(50)),
 		db.Column('email', String(100)),
 		db.Column('password_hash',String(200)),
-		db.Column('confirmed', Boolean)
+		db.Column('confirmed', Boolean),
+		extend_existing=True
 	)
 
 	#Role_User Mapping
 	role_user_mapping = db.Table('role_user', metadata,
 		db.Column('role_id', Integer, ForeignKey('role.id')),
 		db.Column('user_id', Integer, ForeignKey('user.id')),
-		db.PrimaryKeyConstraint('role_id', 'user_id', name='role_user_pk')
+		db.PrimaryKeyConstraint('role_id', 'user_id', name='role_user_pk'),
+		extend_existing=True
 	)
 
 	#Role Mapping
@@ -43,6 +45,7 @@ def init(db):
 		db.Column('id', Integer, primary_key=True),
 		db.Column('name', String(50)),
 		db.Column('description', String(200)),
+  		extend_existing=True
 	)
 
 	# Survey Bills Domain ------------------------------------------------------------------
@@ -57,7 +60,8 @@ def init(db):
 		db.Column('total_points', Integer),
 		db.Column('private', Boolean),
 		db.Column('visible', Boolean),
-		db.Column('active', Boolean)
+		db.Column('active', Boolean),
+		extend_existing=True
 	)
 
 	#Question Mapping
@@ -69,7 +73,7 @@ def init(db):
 		db.Column('creation_date', DateTime),
 		db.Column('value_points', Integer),
 		db.Column('survey', Integer, ForeignKey('survey.id')),
-
+		extend_existing=True
 	)
 
 	#Answer Mapping
@@ -81,8 +85,8 @@ def init(db):
 		db.Column('creation_date', DateTime),
 		db.Column('value_points', Integer),
 		db.Column('question', Integer, ForeignKey('question.id')),
-		db.Column('answer_type', Integer)
-
+		db.Column('answer_type', Integer),
+		extend_existing=True
 	)
 
 	# Mappers ------------------------------------------------------------------

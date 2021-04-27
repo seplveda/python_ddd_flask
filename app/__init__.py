@@ -1,16 +1,17 @@
 from flask import Flask
 from config import config
-from context import Context
+from app.context import Context
 
 from injector import inject
 from flask_injector import FlaskInjector
 
-from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.login import LoginManager
-from flask.ext.bootstrap import Bootstrap
-from flask.ext.mail import Mail
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
+from flask_bootstrap import Bootstrap
+from flask_mail import Mail
+from flask_bower import Bower
 
-from flask.ext.assets import Environment
+from flask_assets import Environment
 
 from .assets import bundles
 
@@ -30,6 +31,7 @@ def create_app(config_name):
 	config[config_name].init_app(app)
 	mail.init_app(app)
 	login_manager.setup_app(app)
+
 
 	assets = Environment(app)
 	assets.register(bundles())

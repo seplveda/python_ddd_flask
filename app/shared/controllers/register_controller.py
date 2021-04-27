@@ -23,7 +23,7 @@ def execute_register():
         send_email(user.email, 'Confirm Your Account',
                     'mail/confirm', user=user, token=token)
 
-        print os.getenv('MAIL_USERNAME')
+        print(os.getenv('MAIL_USERNAME'))
 
         return redirect(url_for('shared.login'))
     return render_template('shared/register/register.html',  form = form)

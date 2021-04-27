@@ -1,4 +1,4 @@
-from flask.ext.login import UserMixin, AnonymousUserMixin
+from flask_login import UserMixin, AnonymousUserMixin
 
 
 class User(object):

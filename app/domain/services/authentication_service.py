@@ -1,5 +1,5 @@
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask.ext.login import login_user, logout_user
+from flask_login import login_user, logout_user
 
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask import current_app
@@ -23,7 +23,7 @@ class AuthenticationService(object):
 
         user = user_repository.get_by_email(email=email)
 
-        print email
+        print(email)
         if user is not None and AuthenticationService.check_password(user.password_hash, password):
             login_user(user, remember=True)
 
@@ -33,7 +33,7 @@ class AuthenticationService(object):
 
     @staticmethod
     def get_current_user(self):
-        return user_repository.get_by_email(flask.ext.login.current_user.email)
+        return user_repository.get_by_email(flask_login.current_user.email)
 
     @staticmethod
     def register(user):

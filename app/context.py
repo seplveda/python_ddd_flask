@@ -1,6 +1,6 @@
 class Context:
     def __init__(self, db):
-        from flask.ext.sqlalchemy import SQLAlchemy
+        from flask_sqlalchemy import SQLAlchemy
         from app.infrastructure.mappings import mapping
         from app.infrastructure.repositories import user_repository
 
@@ -15,9 +15,9 @@ class Context:
         from app.infrastructure.mappings import mapping
         from app.infrastructure.mappings.mapping import metadata
         mapping.init(db)
-        print db.engine
-        # metadata.create_all(current_app.config.get('SQLALCHEMY_DATABASE_URI))
-        metadata.create_all(db.engine)
+        print(db.engine)
+        metadata.create_all(current_app.config.get('SQLALCHEMY_DATABASE_URI'))
+        #metadata.create_all(db.engine)
 
     def setup_user_roles(self):
 

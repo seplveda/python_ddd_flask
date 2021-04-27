@@ -1,7 +1,7 @@
 from app.domain.shared.role import Role
-import repository_base
+from app.infrastructure.repositories.repository_base import RepositoryBase
 
-class RoleRepository(repository_base.RepositoryBase):
+class RoleRepository(RepositoryBase):
 
     def __init__(self):
         super(RoleRepository, self).__init__()

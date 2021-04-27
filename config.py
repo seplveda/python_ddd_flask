@@ -19,6 +19,7 @@ class Config:
 	SYSTEM_MAIL_SUBJECT_PREFIX = '[ADMIN]'
 	SYSTEM_MAIL_SENDER = 'Admin <>'
 	SYSTEM_ADMIN = os.environ.get('SYSTEM_ADMIN')
+	BOWER_COMPONENTS_ROOT = os.path.join(basedir, '/static/vendor/bower_components')
 
 
 	@staticmethod

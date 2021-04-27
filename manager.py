@@ -1,8 +1,8 @@
 import os
 from app import create_app
-from flask.ext.script import Manager, Shell
-from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.migrate import Migrate, MigrateCommand
+from flask_script import Manager, Shell
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate, MigrateCommand
 
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')
 manager = Manager(app)
@@ -29,7 +29,7 @@ def db_setup():
 @manager.command
 def setup_user_roles():
 	from app import context
-	from flask.ext.sqlalchemy import SQLAlchemy
+	from flask_sqlalchemy import SQLAlchemy
 	db = SQLAlchemy()
 	context.setup_user_roles()
 

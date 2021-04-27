@@ -1,6 +1,6 @@
 import os
 from migrate.versioning import api
-from flask.ext.sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 
 class Migrations:
 
